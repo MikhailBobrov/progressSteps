@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+:root {
+    --line-border-fill: #3498db;
+    --line-border-empty: #e0e0e0
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f6f7fb;;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.progress-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    max-width: 100%;
+    margin-bottom: 30px;
+}
+
+/*empty line*/
+.progress-container::before {
+    content: '';
+    background-color: var(--line-border-empty);
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    /*делает линию по середине*/
+    transform: translateY(-50%);
+    z-index: -2;
+}
+
+/*progress line*/
+.progress {
+    background-color: var(--line-border-fill);
+    position: absolute;
+    height: 4px;
+    width: 0%;
+    top: 50%;
+    left: 0;
+    /*делает линию по середине*/
+    transform: translateY(-50%);
+    z-index: -2;
+    /*будет плавно ходить*/
+    transition: 2s ease;
+}
+
+/*circle*/
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: white;
+    color: #999;
+    border: 3px solid var(--line-border-empty);
+    border-color: var(--line-border-empty);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*для изминения border*/
+    transition: 0.4s ease;
+}
+
+.circle.active {
+    border-color: var(--line-border-fill);
+}
+
+.btn {
+    background-color: var(--line-border-fill);
+    padding: 10px 30px;
+    border-radius: 10%;
+    color: white;
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 16px;
+}
+
+/*когда кликаем будет при нажатии интересный эффект*/
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn:focus {
+    outline: none;
+}
+
+.btn:disabled {
+    background-color: var(--line-border-empty);
+    cursor: not-allowed;
+}
+
